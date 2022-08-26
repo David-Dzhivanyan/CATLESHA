@@ -167,11 +167,19 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
-                additionalData: `@import ${JSON.stringify(srcGlobalSass)};`,
                 sassOptions: {
                   sourceMap: modeProduction,
                   outputStyle: 'expanded',
                 },
+              },
+            },
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                hoistUseStatements: true,
+                resources: [
+                  srcGlobalSass
+                ]
               },
             },
           ],
