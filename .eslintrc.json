@@ -9,8 +9,7 @@
     "jquery": true
   },
   "extends": [
-    "eslint:recommended",
-    "google"
+    "eslint:recommended"
   ],
   "plugins": [
     "standard",
@@ -29,6 +28,7 @@
       }
     }]
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 6,
