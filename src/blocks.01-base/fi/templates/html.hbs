@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>${options.name}</title>
+  <link rel="stylesheet" type="text/css" href="{{ htmlCssRelativePath }}" />
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    {{# each names }}
+      <div class="col">
+        <div><i class="fi fi_icon-{{ this }}" style="width: 16px; height: 16px; font-size: 18px; vertical-align: middle"></i>
+          <span style="vertical-align: middle"> - {{ this }}</span>
+        </div>
+      </div>
+    {{/ each }}
+  </div>
+</div>
+</body>
+</html>

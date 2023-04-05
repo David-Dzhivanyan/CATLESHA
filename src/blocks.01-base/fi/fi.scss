@@ -1,3 +1,4 @@
+@import "variables";
 @font-face {
   font-family: $icons-font-family;
   font-weight: normal;
@@ -6,35 +7,15 @@
   src: url('#{$icons-font-folder}/#{$icons-font-family}.woff') format('woff');
 }
 .fi{
-  @include fi();
-  &[data-count]{
-    position: relative;
-    &:after{
-      position: absolute;
-      top: -40%;
-      right: -25%;
-      font-family: $font-family-base;
-      content: attr(data-count);
-      background-color: $secondary;
-      color: $primary;
-      text-align: center;
-      font-size: 0.7em;
-      height: 1.5em;
-      width: 1.5em;
-      border-radius: 1em;
-      line-height: 1.5em;
-    }
-  }
-}
-.fi_icon_stub{
-  &:before{
-    display: inline-block;
-    content: '';
-    width: 1em;
-    height: 1em;
-    border: 1px solid;
-    box-sizing: border-box;
-  }
+  font-family: $icons-font-family;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 @each $key, $value in $icons {
   .fi_icon_#{$key} {
