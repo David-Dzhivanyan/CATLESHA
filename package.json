@@ -85,6 +85,7 @@
     "file-loader": "^1.1.11",
     "git-branch": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "icon-font-generator": "^2.1.11",
     "image-webpack-loader": "^4.6.0",
     "imagemin-webpack-plugin": "^2.4.0",
     "sass": "^1.22.2",
@@ -111,7 +112,7 @@
     "prod:build": "cross-env NODE_ENV=production webpack --mode production --progress --colors --hide-modules",
     "prod:prof": "cross-env NODE_ENV=production webpack --mode production --profile --json > stats.json",
     "prod:stat": "npm run prod:prof && webpack-bundle-analyzer stats.json dist",
-    "icon:build": "icon-font-generator src/blocks.01-base/fi/svg/*.svg -o src/blocks.01-base/fi/font --name fi -c false --html true --types woff",
+    "icon:build": "node ./settings/icon-build.js",
     "branch:build": "cross-env NODE_ENV=branch webpack --mode production --progress --colors --hide-modules"
   },
   "private": false
