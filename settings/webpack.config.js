@@ -1,5 +1,7 @@
 // plugins
 const _ = require('lodash');
+const { get, keyBy, map, filter } = _;
+const dotenv = require('dotenv');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -9,38 +11,37 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackAssetTemplatePlugin = require('@intervolga/html-webpack-asset-template-plugin');
 const HtmlIndexPlugin = require('@intervolga/html-index-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-
-// config
-const git = require('git-branch');
-const path = require('path');
-const utils = require('./utils');
 const pkg = require('../package.json');
 
-const branch = git.sync();
-const mode = _.get(process, ['env', 'NODE_ENV'], 'production');
-const proxy = _.get(pkg, ['proxy'], '');
-const bemLevels = _.get(pkg, ['bemLevels'], []);
-const bemTechs = _.get(pkg, ['bemTechs'], []);
-const publicPath = mode === 'production' ? _.get(pkg, ['publicPath'], '') : '';
+const path = require('path');
+const utils = require('./utils');
 
-const modeProduction = Boolean(['production', 'branch', 'storybook'].indexOf(mode) + 1);
 
+const mode = get(process, 'env.NODE_ENV', 'production');
+const modeProduction = 'production' === mode;
 const dirProject = path.resolve(__dirname, '../');
 const src = path.join(dirProject, 'src');
 const srcBundles = path.join(src, 'bundles');
 const srcGlobalSass = path.join(src, 'sass-globals', 'globals.scss');
+const env = modeProduction ? path.join(dirProject, '.env') : path.join(dirProject, '.env.development.local');
 
-const regex = (path) => /\.bemjson\.js$/i.test(path);
-const pathsBundles = _.filter(utils.getAllFilesInPathSync(srcBundles, [], false), regex);
+dotenv.config({ path: env });
+
+const bundle = get(process, 'env.SITE_BUNDLES', '');
+const proxy = get(process, 'env.SITE_PROXY') || get(pkg, 'proxy');
+const bemLevels = get(pkg, 'bemLevels', []);
+const bemTechs = get(pkg, 'bemTechs', []);
+const publicPath = modeProduction ? get(process, 'env.SITE_PUBLIC_PATH', get(pkg, 'publicPath', '')) : '';
+const regex = (path) => new RegExp(`${bundle}.bemjson.js`).test(path);
+const pathsBundles = filter(utils.getAllFilesInPathSync(srcBundles, [], false), regex);
 
 let dir = 'build';
-if (mode === 'branch') dir = _.join(['branch', branch], '/');
-if (mode === 'production') dir = 'dist';
+if (mode === 'production' || mode === 'sand') dir = 'dist';
 
 const fileName = {
   dir,
   main: 'assets/[name].js',
-  asset: 'assets/[path][name].[ext]',
+  asset: 'assets/[path][name].[ext]?[hash]',
   css: '[name].css',
 };
 
@@ -49,9 +50,9 @@ const outputPath = path.join(dirProject, fileName.dir);
 
 const entry = modeProduction
   ? {merged: entries}
-  : _.keyBy(entries, (entry) => path.basename(entry, '.js'));
+  : keyBy(entries, (entry) => path.basename(entry, '.js'));
 
-const HtmlWebpackPlugins = _.map(entries, (name) => {
+const HtmlWebpackPlugins = map(entries, (name) => {
   const base = path.basename(name, '.js');
   return new HtmlWebpackPlugin({
     chunks: [modeProduction ? 'merged' : base],
@@ -91,16 +92,14 @@ module.exports = {
     watchOptions: {
       ignored: /node_modules/,
     },
-    proxy: {
-      '/proxy': {
+    proxy: [
+      {
+        context: ['/rest', '/upload', '/bitrix'],
         target: proxy,
-        pathRewrite: {
-          '^/proxy': '',
-        },
         changeOrigin: true,
         secure: true,
-      },
-    },
+      }
+    ],
   },
   module: {
     rules: [
@@ -228,11 +227,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'NODE_ENV': JSON.stringify(mode),
-      'LANG': JSON.stringify('ru'),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
     }),
-    new webpack.ProvidePlugin({}),
+    new webpack.DefinePlugin({}),
 
     ...HtmlWebpackPlugins,
     new HtmlIndexPlugin({}),

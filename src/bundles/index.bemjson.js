@@ -3,7 +3,9 @@ module.exports = {
     title: 'Пустая',
     content: [
         require('./common/header.bemjson'),
-        {block: 'img', mods: {lazy: true}, src: 'http://place-hold.it/1200x200'},
+        {cls: 'container', content: [
+                {block: 'img', mods: {lazy: true}, src: 'http://place-hold.it/1200x200'},
+            ]},
         require('./common/footer.bemjson'),
     ],
 };
