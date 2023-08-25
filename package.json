@@ -1,119 +1,90 @@
 {
-  "author": "Shkarupa Alex",
+  "author": "Zvezdilin Artem ",
   "name": "project-stub",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:TeG2405/frontend-project-start.git"
   },
-  "clientBH": "static",
-  "proxy": "",
-  "publicPath": "",
   "engines": {
-    "node": ">=6"
-  },
-  "browserslist": [
-    "ChromeAndroid >= 35",
-    "FirefoxAndroid >= 38",
-    "iOS >= 8",
-    "Android >= 4.4",
-    "ExplorerMobile >= 11",
-    "OperaMobile >= 37",
-    "Chrome >= 35",
-    "Firefox >= 38",
-    "Opera >= 18",
-    "Safari >= 8",
-    "Explorer >= 11",
-    "Edge >= 13"
-  ],
-  "bemLevels": [
-    "src/blocks.01-base",
-    "src/blocks.02-common",
-    "src/blocks.03-bootstrap",
-    "src/blocks.04-project"
-  ],
-  "bemTechs": {
-    "styles": [
-      "css",
-      "scss"
-    ],
-    "scripts": [
-      "js"
-    ],
-    "html": [
-      "bh.js"
-    ]
+    "node": ">=18"
   },
   "dependencies": {
-    "bootstrap": "^5.2.0",
-    "lazysizes": "^4.1.2",
-    "lodash-es": "^4.17.20",
-    "swiper": "^8.1.0"
+    "bootstrap": "^5.3.1",
+    "lazysizes": "^5.3.2",
+    "lodash": "^4.17.21",
+    "swiper": "^10.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/runtime": "^7.0.0",
-    "babel-eslint": "^10.1.0",
     "@intervolga/bembh-loader": "^1.1.8",
     "@intervolga/bemdecl-loader": "^1.0.5",
     "@intervolga/bemdeps-loader": "^1.1.6",
-    "@intervolga/bemjson-loader": "^1.2.4",
+    "@intervolga/bemjson-loader": "^1.2.2",
     "@intervolga/bemrequire-loader": "^1.1.5",
     "@intervolga/bh-ext": "^1.0.7",
     "@intervolga/eval-loader": "^1.0.3",
-    "@intervolga/html-index-plugin": "^1.0.3",
-    "@intervolga/html-webpack-asset-template-plugin": "^1.0.3",
-    "@intervolga/optimize-cssnano-plugin": "^1.0.6",
-    "autoprefixer": "^8.6.5",
-    "babel-loader": "^8.0.2",
-    "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.2",
-    "core-js": "^3.8.2",
-    "cross-env": "^5.2.0",
-    "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "eslint-config-google": "^0.8.0",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "exports-loader": "^0.7.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^1.1.11",
-    "git-branch": "^2.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "icon-font-generator": "^2.1.11",
-    "image-webpack-loader": "^4.6.0",
-    "imagemin-webpack-plugin": "^2.4.0",
-    "sass": "^1.22.2",
+    "@intervolga/html-index-plugin": "^1.0.4",
+    "eslint": "^8.47.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "babel-eslint": "^10.1.0",
+    "@popperjs/core": "^2.11.8",
+    "core-js": "^3.32.1",
+    "autoprefixer": "^10.4.15",
+    "@babel/core": "^7.22.9",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.22.10",
+    "@babel/preset-env": "^7.22.6",
+    "babel-loader": "^9.1.2",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "dotenv-webpack": "^8.0.1",
+    "mini-css-extract-plugin": "^2.7.6",
     "postcss-discard-font-face": "^3.0.0",
     "postcss-easysprites": "^1.1.0",
-    "postcss-loader": "^2.1.6",
-    "sass-loader": "^10.2.1",
-    "sass-rem": "^2.0.1",
+    "postcss-loader": "^7.3.3",
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2",
     "sass-resources-loader": "^2.2.5",
-    "style-loader": "^0.20.3",
-    "svg-url-loader": "^2.3.2",
-    "url-loader": "^0.6.2",
-    "webpack": "^4.20.2",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.14"
+    "style-loader": "^3.3.3",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "overrides": {
+    "@intervolga/bembh-loader":  {
+      "webpack": "^5.88.2"
+    },
+    "@intervolga/bemdecl-loader": {
+      "webpack": "^5.88.2"
+    },
+    "@intervolga/bemdeps-loader":  {
+      "webpack": "^5.88.2"
+    },
+    "@intervolga/bemjson-loader": {
+      "webpack": "^5.88.2"
+    },
+    "@intervolga/bemrequire-loader":  {
+      "webpack": "^5.88.2"
+    },
+    "@intervolga/bh-ext": {
+      "webpack": "^5.88.2"
+    },
+    "@intervolga/eval-loader":  {
+      "webpack": "^5.88.2"
+    },
+    "@intervolga/html-index-plugin": {
+      "webpack": "^5.88.2"
+    }
   },
   "scripts": {
     "lint:fix": "eslint --fix src",
-    "dev:build": "cross-env NODE_ENV=develop webpack --mode development --colors --hide-modules",
-    "dev:watch": "cross-env NODE_ENV=develop webpack-dev-server --mode development --watch",
-    "dev:prof": "cross-env NODE_ENV=develop node --prof ./node_modules/.bin/webpack --mode development --colors",
-    "prod:watch": "cross-env NODE_ENV=production webpack-dev-server --mode production --watch",
-    "prod:build": "cross-env NODE_ENV=production webpack --mode production --progress --colors --hide-modules",
-    "prod:prof": "cross-env NODE_ENV=production webpack --mode production --profile --json > stats.json",
-    "prod:stat": "npm run prod:prof && webpack-bundle-analyzer stats.json dist",
-    "icon:build": "node ./settings/icon-build.js",
-    "branch:build": "cross-env NODE_ENV=branch webpack --mode production --progress --colors --hide-modules"
+    "dev:build": "webpack --mode development --colors --hide-modules",
+    "dev:watch": "webpack serve --mode development",
+    "prod:watch": "webpack --mode production --watch",
+    "prod:build": "webpack --mode production --progress",
+    "prod:prof": "webpack --mode production --profile --json > stats.json"
   },
   "private": false
 }
