@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
-const CopyPlugin = require('copy-webpack-plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getAllFilesInPathSync = require('./internals/utils/getAllFilesInPathSync.js');
 
@@ -21,7 +21,7 @@ const TECH = {
   html: ['bh.js']
 };
 
-const entries = getAllFilesInPathSync(PAGES).filter((path) => /\.bemjson\.js$/i.test(path));
+const entries = getAllFilesInPathSync(PAGES, [], false).filter((path) => /\.bemjson\.js$/i.test(path));
 
 module.exports = {
   entry: {
@@ -83,11 +83,6 @@ module.exports = {
       jQuery: 'jquery',
     }),
     new webpack.DefinePlugin({}),
-    new CopyPlugin({
-      patterns: [
-        { from: PAGES, to: PAGES },
-      ],
-    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
