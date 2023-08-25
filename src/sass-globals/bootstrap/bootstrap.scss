@@ -2,5 +2,6 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/variables-dark";
 @import "~bootstrap/scss/maps";
-@import "./mixins"; // TODO Убрать после фикса https://github.com/twbs/bootstrap/issues/39028
+//@import "~bootstrap/scss/mixins";
+@import "./mixins"; // TODO Убрать в пользу "bootstrap/scss/mixins" после фикса https://github.com/twbs/bootstrap/issues/39028
 @import "~bootstrap/scss/utilities";
