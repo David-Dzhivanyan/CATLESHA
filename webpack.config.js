@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
-// const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlIndexPlugin = require('@intervolga/html-index-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getAllFilesInPathSync = require('./internals/utils/getAllFilesInPathSync.js');
 
@@ -87,10 +87,16 @@ module.exports = {
   },
   plugins: [
     new Dotenv({}),
+    new CopyPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'public'), to: DIST },
+      ],
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
     }),
+    new HtmlIndexPlugin({}),
     new webpack.DefinePlugin({}),
     new MiniCssExtractPlugin({
       filename: '[name].css',
