@@ -11,6 +11,7 @@ const PROXY = process.env.SITE_PROXY || null;
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
 const PAGES = path.resolve(__dirname, 'src/bundles');
+const GLOBAL_SCSS = path.join(SRC, 'sass-globals', 'globals.scss');
 
 const BH = require.resolve('@intervolga/bh-ext');
 const LEVELS = ['blocks.01-base', 'blocks.02-common', 'blocks.03-bootstrap', 'blocks.04-project'];
@@ -54,6 +55,13 @@ module.exports = {
           'css-loader',
           'postcss-loader',
           'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              hoistUseStatements: true,
+              resources: [ GLOBAL_SCSS ]
+            },
+          },
         ],
       },
       {
@@ -68,8 +76,8 @@ module.exports = {
           'babel-loader',
           '@intervolga/bemrequire-loader',
           {loader: '@intervolga/bembh-loader',  options: {client: 'static', bhFilename: BH },},
-          {loader: '@intervolga/bemdeps-loader', options: {levels: BLOCKS},},
-          {loader: '@intervolga/bemdecl-loader', options: {levels: BLOCKS, techMap: TECH },},
+          {loader: '@intervolga/bemdeps-loader', options: {levels: BLOCKS, techMap: TECH }},
+          {loader: '@intervolga/bemdecl-loader', options: {levels: BLOCKS},},
           '@intervolga/bemjson-loader',
           '@intervolga/eval-loader'
         ],
