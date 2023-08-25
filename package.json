@@ -43,13 +43,15 @@
     "sass-loader": "^13.3.2",
     "sass-resources-loader": "^2.2.5",
     "style-loader": "^3.3.3",
+    "html-webpack-plugin": "^5.5.3",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "scripts": {
     "lint:fix": "eslint --fix src",
     "dev:build": "webpack --mode development --colors --hide-modules",
-    "dev:watch": "webpack --mode development --watch",
+    "dev:watch": "webpack serve --mode development",
     "prod:watch": "webpack --mode production --watch",
     "prod:build": "webpack --mode production --progress",
     "prod:prof": "webpack --mode production --profile --json > stats.json"

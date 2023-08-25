@@ -2,12 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 // const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getAllFilesInPathSync = require('./internals/utils/getAllFilesInPathSync.js');
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const PUBLIC_PATCH = process.env.SITE_PUBLIC_PATH || '';
-const PROXY = process.env.SITE_PROXY || null;
+const PROXY = process.env.SITE_PROXY;
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
 const PAGES = path.resolve(__dirname, 'src/bundles');
