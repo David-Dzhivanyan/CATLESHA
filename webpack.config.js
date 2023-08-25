@@ -12,6 +12,15 @@ const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
 const PAGES = path.resolve(__dirname, 'src/bundles');
 
+const BH = require.resolve('@intervolga/bh-ext');
+const LEVELS = ['blocks.01-base', 'blocks.02-common', 'blocks.03-bootstrap', 'blocks.04-project'];
+const BLOCKS = LEVELS.map((dir) => path.resolve(SRC, dir));
+const TECH = {
+  styles: ['css', 'scss'],
+  scripts: ['js'],
+  html: ['bh.js']
+};
+
 const entries = getAllFilesInPathSync(PAGES).filter((path) => /\.bemjson\.js$/i.test(path));
 
 module.exports = {
@@ -39,17 +48,30 @@ module.exports = {
         use: [ 'asset/resource' ],
       },
       {
-        test: /\.js$/i,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
-      },
-      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
           'sass-loader',
+        ],
+      },
+      {
+        test: /\.js$/i,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.bemjson\.js$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+          '@intervolga/bemrequire-loader',
+          {loader: '@intervolga/bembh-loader',  options: {client: 'static', bhFilename: BH },},
+          {loader: '@intervolga/bemdeps-loader', options: {levels: BLOCKS},},
+          {loader: '@intervolga/bemdecl-loader', options: {levels: BLOCKS, techMap: TECH },},
+          '@intervolga/bemjson-loader',
+          '@intervolga/eval-loader'
         ],
       },
     ],
