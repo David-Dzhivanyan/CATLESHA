@@ -43,11 +43,11 @@ module.exports = {
     rules: [
       {
         test: /\.(ttf|eot|woff?2)(\?v=[\d+.]+)?$/,
-        use: [ 'asset/resource' ],
+        type: 'asset/resource',
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
-        use: [ 'asset/resource' ],
+        type: 'asset/resource',
       },
       {
         test: /\.(sa|sc|c)ss$/,
