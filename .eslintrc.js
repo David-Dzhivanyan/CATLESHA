@@ -1,14 +1,19 @@
 module.export = {
   "globals": {
-    "NODE_ENV": true
+    "NODE_ENV": true,
+    "PUBLIC_PATH": true
   },
   "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
     "jquery": true
   },
   "extends": [
     "eslint:recommended"
   ],
   "plugins": [
+    "standard",
     "promise"
   ],
   "rules": {

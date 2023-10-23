@@ -35,10 +35,12 @@
     "babel-loader": "^9.1.2",
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.32.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.47.0",
     "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-standard": "^5.0.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss-discard-font-face": "^3.0.0",
@@ -80,11 +82,12 @@
   },
   "scripts": {
     "lint:fix": "eslint --fix src",
-    "dev:build": "webpack --mode development --colors --hide-modules",
-    "dev:watch": "webpack serve --mode development",
-    "prod:watch": "webpack --mode production --watch",
-    "prod:build": "webpack --mode production --progress",
-    "prod:prof": "webpack --mode production --profile --json > stats.json"
+    "dev:build": "cross-env NODE_ENV=development webpack --mode development",
+    "dev:watch": "cross-env NODE_ENV=development webpack serve --mode development",
+    "prod:watch": "cross-env NODE_ENV=production webpack serve --mode production",
+    "prod:build": "cross-env NODE_ENV=production webpack --mode production --progress",
+    "prod:prof": "cross-env NODE_ENV=production webpack --mode production --profile --json > stats.json",
+    "sand:build": "cross-env NODE_ENV=sand webpack --mode production --progress"
   },
   "private": false
 }

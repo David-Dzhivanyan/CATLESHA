@@ -5,8 +5,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlIndexPlugin = require('@intervolga/html-index-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getAllFilesInPathSync = require('./internals/utils/getAllFilesInPathSync.js');
+const _ = require('lodash');
 
-const IS_PROD = process.env.NODE_ENV === 'production';
+const MODE = _.get(process, ['env', 'NODE_ENV'], '');
 const PUBLIC_PATCH = process.env.SITE_PUBLIC_PATH || '';
 const PROXY = process.env.SITE_PROXY;
 const DIST = path.resolve(__dirname, 'dist');
@@ -107,7 +108,10 @@ module.exports = {
       jQuery: 'jquery',
     }),
     new HtmlIndexPlugin({}),
-    new webpack.DefinePlugin({}),
+    new webpack.DefinePlugin({
+      'NODE_ENV': JSON.stringify(MODE),
+      'PUBLIC_PATH': JSON.stringify(PUBLIC_PATCH),
+    }),
     new MiniCssExtractPlugin({
       filename: `[name]${SAND_HASH}.css`,
       chunkFilename: '[id].css',
