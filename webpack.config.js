@@ -7,7 +7,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getAllFilesInPathSync = require('./internals/utils/getAllFilesInPathSync.js');
 const _ = require('lodash');
 
-const MODE = _.get(process, ['env', 'NODE_ENV'], '');
+const MODE = _.get(process, ['env', 'NODE_ENV'], 'production');
+const IS_PROD = process.env.NODE_ENV === 'production';
 const PUBLIC_PATCH = process.env.SITE_PUBLIC_PATH || '';
 const PROXY = process.env.SITE_PROXY;
 const DIST = path.resolve(__dirname, 'dist');
