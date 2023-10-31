@@ -13,6 +13,7 @@ const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
 const PAGES = path.resolve(__dirname, 'src/bundles');
 const GLOBAL_SCSS = path.join(SRC, 'sass-globals', 'globals.scss');
+const SAND_HASH = PUBLIC_PATCH === 'sand' ? '.[contenthash]': '';
 
 const BH = require.resolve('@intervolga/bh-ext');
 const LEVELS = ['blocks.01-base', 'blocks.02-common', 'blocks.03-bootstrap', 'blocks.04-project'];
@@ -42,7 +43,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ttf|eot|woff?2)(\?v=[\d+.]+)?$/,
+        test: /fi\.(ttf|eot|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {name: 'assets/[path][name].[contenthash].[ext]'},
+          },
+        ],
+      },
+      {
+        test: /[^fi]\.(ttf|eot|woff|woff2)$/,
         type: 'asset/resource',
       },
       {
@@ -99,7 +109,7 @@ module.exports = {
     new HtmlIndexPlugin({}),
     new webpack.DefinePlugin({}),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: `[name]${SAND_HASH}.css`,
       chunkFilename: '[id].css',
     }),
   ],
