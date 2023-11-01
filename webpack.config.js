@@ -45,17 +45,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /fi\.(ttf|eot|woff|woff2)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {name: 'assets/[path][name].[contenthash].[ext]'},
-          },
-        ],
-      },
-      {
-        test: /[^fi]\.(ttf|eot|woff|woff2)$/,
+        test: /\.(ttf|eot|woff|woff2)$/,
         type: 'asset/resource',
+        generator : {
+          filename : 'fonts/[name].[contenthash].[ext]',
+        }
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
