@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack'); // TODO: process.env не работает в конфиге.
+const Watchpack = require('watchpack');
+const iconBuild = require('./utils/icon-build');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlIndexPlugin = require('@intervolga/html-index-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -27,6 +29,22 @@ const TECH = {
 };
 
 const entries = getAllFilesInPathSync(PAGES, [], false).filter((path) => /\.bemjson\.js$/i.test(path));
+
+if (process.env.npm_lifecycle_event === 'dev:watch') {
+  const wp = new Watchpack({
+    aggregateTimeout: 200,
+    poll: true,
+  });
+
+  wp.watch({
+    directories: [`${SRC}/blocks.01-base/fi/svg`],
+  })
+
+  wp.on("aggregated", function(changes, removals) {
+    iconBuild();
+  });
+}
+
 
 module.exports = {
   entry: {
@@ -119,7 +137,7 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
   ],
-  devServer: {
+  devServer: { // TODO: добавить авто перезагрузку
     proxy: PROXY && [
       {
         context: ['/rest', '/upload'],
