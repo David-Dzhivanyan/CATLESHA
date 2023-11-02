@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const Dotenv = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack'); // TODO: process.env не работает в конфиге.
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlIndexPlugin = require('@intervolga/html-index-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -9,13 +9,13 @@ const _ = require('lodash');
 
 const MODE = _.get(process, ['env', 'NODE_ENV'], 'production');
 const IS_PROD = process.env.NODE_ENV === 'production';
-const PUBLIC_PATCH = process.env.SITE_PUBLIC_PATH || '';
+const PUBLIC_PATCH = process.env.SITE_PUBLIC_PATH || ''; // TODO: public path не работает при подключение файлов в dist.
 const PROXY = process.env.SITE_PROXY;
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
 const PAGES = path.resolve(__dirname, 'src/bundles');
 const GLOBAL_SCSS = path.join(SRC, 'sass-globals', 'globals.scss');
-const SAND_HASH = PUBLIC_PATCH === 'sand' ? '.[contenthash]': '';
+const SAND_HASH = MODE === 'sand' ? '.[contenthash]': ''; // TODO: Хеш не подтягивается при подключении
 
 const BH = require.resolve('@intervolga/bh-ext');
 const LEVELS = ['blocks.01-base', 'blocks.02-common', 'blocks.03-bootstrap', 'blocks.04-project'];
@@ -45,10 +45,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ttf|eot|woff|woff2)$/,
+        test: /fi\.(ttf|eot|woff|woff2)$/,
         type: 'asset/resource',
         generator : {
-          filename : 'fonts/[name].[contenthash].[ext]',
+          filename : 'fonts/[name].[contenthash][ext]',
+        }
+      },
+      {
+        test: /[^fi]\.(ttf|eot|woff|woff2)$/,
+        type: 'asset/resource',
+        generator : {
+          filename : 'fonts/[name][ext]',
         }
       },
       {
@@ -108,7 +115,7 @@ module.exports = {
       'PUBLIC_PATH': JSON.stringify(PUBLIC_PATCH),
     }),
     new MiniCssExtractPlugin({
-      filename: `[name]${SAND_HASH}.css`,
+      filename: `[name].css`,
       chunkFilename: '[id].css',
     }),
   ],
