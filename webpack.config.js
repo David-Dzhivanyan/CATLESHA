@@ -1,23 +1,24 @@
 const path = require('path');
 const webpack = require('webpack');
-const Dotenv = require('dotenv-webpack'); // TODO: process.env не работает в конфиге.
+const dotenv = require('dotenv');
 const Watchpack = require('watchpack');
 const iconBuild = require('./utils/icon-build');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlIndexPlugin = require('@intervolga/html-index-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getAllFilesInPathSync = require('./internals/utils/getAllFilesInPathSync.js');
-const _ = require('lodash');
 
-const MODE = _.get(process, ['env', 'NODE_ENV'], 'production');
-const IS_PROD = process.env.NODE_ENV === 'production';
-const PUBLIC_PATCH = process.env.SITE_PUBLIC_PATH || ''; // TODO: public path не работает при подключение файлов в dist.
+const MODE = process.env.NODE_ENV || 'production';
+const IS_PROD = MODE === 'production';
+dotenv.config({ path: IS_PROD ? path.join(__dirname, '.env') : path.join(__dirname, '.env.development')});
+
+const IS_SAND = !!process.env.SAND;
+const PUBLIC_PATCH = IS_SAND ? '' : process.env.SITE_PUBLIC_PATH || '';
 const PROXY = process.env.SITE_PROXY;
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
 const PAGES = path.resolve(__dirname, 'src/bundles');
 const GLOBAL_SCSS = path.join(SRC, 'sass-globals', 'globals.scss');
-const SAND_HASH = MODE === 'sand' ? '.[contenthash]': ''; // TODO: Хеш не подтягивается при подключении
 
 const BH = require.resolve('@intervolga/bh-ext');
 const LEVELS = ['blocks.01-base', 'blocks.02-common', 'blocks.03-bootstrap', 'blocks.04-project'];
@@ -30,7 +31,7 @@ const TECH = {
 
 const entries = getAllFilesInPathSync(PAGES, [], false).filter((path) => /\.bemjson\.js$/i.test(path));
 
-if (process.env.npm_lifecycle_event === 'dev:watch') {
+if (process.env.WEBPACK_SERVE) {
   const wp = new Watchpack({
     aggregateTimeout: 200,
     poll: true,
@@ -117,7 +118,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new Dotenv({}),
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, 'public'), to: DIST },
@@ -131,6 +131,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'NODE_ENV': JSON.stringify(MODE),
       'PUBLIC_PATH': JSON.stringify(PUBLIC_PATCH),
+      'SAND': JSON.stringify(process.env.SAND),
     }),
     new MiniCssExtractPlugin({
       filename: `[name].css`,

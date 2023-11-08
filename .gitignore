@@ -9,3 +9,5 @@ node_modules
 test
 branch
 dist
+.env
+.env.development

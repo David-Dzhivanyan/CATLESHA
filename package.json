@@ -37,7 +37,7 @@
     "core-js": "^3.32.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
-    "dotenv-webpack": "^8.0.1",
+    "dotenv": "^16.3.1",
     "eslint": "^8.47.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^5.0.0",
@@ -90,7 +90,7 @@
     "prod:watch": "cross-env NODE_ENV=production webpack serve --mode production",
     "prod:build": "cross-env NODE_ENV=production webpack --mode production --progress",
     "prod:prof": "cross-env NODE_ENV=production webpack --mode production --profile --json > stats.json",
-    "sand:build": "cross-env NODE_ENV=sand webpack --mode production --progress",
+    "sand:build": "cross-env NODE_ENV=production --SAND=true webpack --mode production --progress ",
     "icon:build": "node ./scripts/icon-build.js"
   },
   "private": false
