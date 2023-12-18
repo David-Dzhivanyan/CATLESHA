@@ -15,6 +15,7 @@ dotenv.config({ path: IS_PROD ? path.join(__dirname, '.env') : path.join(__dirna
 const IS_SAND = !!process.env.SAND;
 const PUBLIC_PATCH = IS_SAND ? '' : process.env.SITE_PUBLIC_PATH || '';
 const PROXY = process.env.SITE_PROXY;
+const HOT_RELOAD = process.env.HOT_RELOAD;
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
 const PAGES = path.resolve(__dirname, 'src/bundles');
@@ -138,7 +139,12 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
   ],
-  devServer: { // TODO: добавить авто перезагрузку
+  devServer: {
+    ...(HOT_RELOAD && {
+      hot: false, // TODO: нужно переписать на hot: true, но он работает не стабильно
+      liveReload: true,
+      watchFiles: ['src/**/*', 'public/**/*'],
+    }),
     proxy: PROXY && [
       {
         context: ['/rest', '/upload'],
