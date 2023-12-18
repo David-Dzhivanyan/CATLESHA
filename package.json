@@ -50,6 +50,7 @@
     "eslint": "^8.47.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^5.0.0",
+    "fantasticon": "^2.0.0",
     "html-webpack-plugin": "^5.5.3",
     "icon-font-generator": "^2.1.11",
     "lodash": "^4.17.21",
@@ -91,6 +92,9 @@
     },
     "@intervolga/html-index-plugin": {
       "webpack": "^5.88.2"
+    },
+    "fantasticon": {
+      "glob": "7.2.0"
     }
   },
   "private": false

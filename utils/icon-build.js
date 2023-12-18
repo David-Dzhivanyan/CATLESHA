@@ -1,38 +1,22 @@
-const execSync = require('child_process').execSync;
-const fs = require('fs');
+const fantasticon = require('fantasticon');
 
 /**
  * Сборка иконок
- * @return {Promise<void>}
  */
-async function build() {
-	const buildCommand =
-		'icon-font-generator src/blocks.01-base/fi/svg/*.svg ' +
-		'-o src/blocks.01-base/fi/font ' +
-		'--name fi ' +
-		'-c true ' +
-		'--html true ' +
-		'--htmltp src/blocks.01-base/fi/templates/html.hbs ' +
-		'--csstp src/blocks.01-base/fi/templates/css.hbs ' +
-		'-p fi_icon ' +
-		'--types woff2';
-
-	const output = await execSync(buildCommand, {encoding: 'utf-8'});
-	console.log(output);
-	createScss('src/blocks.01-base/fi/font', 'fi', 'src/blocks.01-base/fi/variables');
+function iconBuild() {
+	fantasticon.generateFonts({
+		inputDir: 'src/blocks.01-base/fi/svg',
+		outputDir: 'src/blocks.01-base/fi/font',
+		prefix: 'fi',
+		name: 'fi',
+		fontTypes: ['woff2'],
+		assetTypes: ['css', 'scss', 'html'],
+		templates: {
+			css: 'src/blocks.01-base/fi/templates/css.hbs',
+			html: 'src/blocks.01-base/fi/templates/html.hbs',
+			scss: 'src/blocks.01-base/fi/templates/scss.hbs',
+		},
+	}).then();
 }
 
-// Создать SCSS файл с иконками
-const createScss = async(output, iconName, fileFolder) => {
-	console.log('START BUILD');
-	let parseData = JSON.stringify(JSON.parse(fs.readFileSync(`${output}/${iconName}.json`)), null, '\t');
-	parseData = parseData.replace(/({|})/g, '');
-	parseData = parseData.replace(/\\\\/g, '\\');
-
-	let styleData = `$icons: (${parseData}) !default;`;
-
-	await fs.writeFileSync(`${fileFolder}.scss`, styleData);
-	console.log('SCSS DONE');
-};
-
-module.exports = build;
+module.exports = iconBuild;

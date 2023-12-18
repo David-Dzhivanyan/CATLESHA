@@ -1,48 +1,25 @@
-.container {
-width: 100%;
-margin-right: auto;
-margin-left: auto;
-max-width: 1320px;
-}
-
-.row {
-display: flex;
-flex-wrap: wrap;
-margin: -8px;
-}
-
-.col {
-flex: 0 0 auto;
-width: 16.66666667%;
-padding: 8px;
-}
-
 @font-face {
-font-family: "{{ fontName }}";
-font-weight: normal;
-font-style: normal;
-font-display: block;
-src: url("./fi.woff2") format("woff2");
+    font-family: "{{ name }}";
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+    src: {{{ fontSrc }}};
 }
 
-.fi {
-font-family: "{{ fontName }}";
-speak: none;
-font-style: normal;
-font-weight: normal;
-font-variant: normal;
-text-transform: none;
-line-height: 1;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
+.{{ prefix }}:before {
+    font-family: {{ name }} !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 {{# each codepoints }}
-  {{# if ../baseSelector }}
-    {{ ../baseSelector }}.{{ ../classPrefix }}{{ @key }}:before {
-  {{ else }}
-    .{{ ../classPrefix }}{{ @key }}:before {
-  {{/ if }}
-  content: "\\{{ this }}";
-  }
+.{{ ../prefix }}_icon_{{ @key }}:before {
+    content: "\\{{ codepoint this }}";
+}
 {{/ each }}
