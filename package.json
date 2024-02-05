@@ -12,18 +12,18 @@
   "dependencies": {
     "bootstrap": "^5.3.1",
     "lazysizes": "^5.3.2",
-    "lodash": "^4.17.21",
-    "swiper": "^10.2.0"
+    "swiper": "^10.2.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@intervolga/bembh-loader": "^1.1.8",
-    "@intervolga/bemdecl-loader": "^1.0.5",
     "@intervolga/bemdeps-loader": "^1.1.6",
-    "@intervolga/bemjson-loader": "^1.2.2",
     "@intervolga/bemrequire-loader": "^1.1.5",
     "@intervolga/bh-ext": "^1.0.7",
     "@intervolga/eval-loader": "^1.0.3",
     "@intervolga/html-index-plugin": "^1.0.4",
+    "@intervolga/bemdecl-loader": "^1.0.5",
+    "@intervolga/bemjson-loader": "^1.2.2",
     "eslint": "^8.47.0",
     "eslint-plugin-promise": "^6.1.1",
     "babel-eslint": "^10.1.0",
@@ -40,8 +40,6 @@
     "css-loader": "^6.8.1",
     "dotenv-webpack": "^8.0.1",
     "mini-css-extract-plugin": "^2.7.6",
-    "postcss-discard-font-face": "^3.0.0",
-    "postcss-easysprites": "^1.1.0",
     "postcss-loader": "^7.3.3",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
