@@ -7,12 +7,15 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlIndexPlugin = require('@intervolga/html-index-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getAllFilesInPathSync = require('./internals/utils/getAllFilesInPathSync.js');
+const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const MODE = process.env.NODE_ENV || 'production';
 const IS_PROD = MODE === 'production';
 dotenv.config({ path: IS_PROD ? path.join(__dirname, '.env') : path.join(__dirname, '.env.development')});
 
 const IS_SAND = !!process.env.SAND;
+const IS_ANALYZE = !!process.env.ANALYZE;
+
 const PUBLIC_PATCH = IS_SAND ? '' : process.env.SITE_PUBLIC_PATH || '';
 const PROXY = process.env.SITE_PROXY;
 const HOT_RELOAD = process.env.HOT_RELOAD;
@@ -40,13 +43,12 @@ if (process.env.WEBPACK_SERVE) {
 
   wp.watch({
     directories: [`${SRC}/blocks.01-base/fi/svg`],
-  })
+  });
 
-  wp.on("aggregated", function(changes, removals) {
+  wp.on('aggregated', function(changes, removals) {
     iconBuild();
   });
 }
-
 
 module.exports = {
   entry: {
@@ -101,7 +103,10 @@ module.exports = {
       {
         test: /\.js$/i,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: {
+          loader: 'babel-loader',
+          options: { babelrc: true }
+        },
       },
       {
         test: /\.bemjson\.js$/,
@@ -135,9 +140,11 @@ module.exports = {
       'SAND': JSON.stringify(process.env.SAND),
     }),
     new MiniCssExtractPlugin({
-      filename: `[name].css`,
+      filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+
+    IS_ANALYZE && new WebpackBundleAnalyzer()
   ],
   devServer: {
     ...(HOT_RELOAD && {
@@ -154,4 +161,4 @@ module.exports = {
       }
     ],
   }
-}
+};

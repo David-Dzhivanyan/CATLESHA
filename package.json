@@ -7,14 +7,15 @@
     "url": "git@gitlab.intervolga.ru:artem/frontend-project-start.git"
   },
   "scripts": {
-    "lint:fix": "eslint --fix src",
-    "dev:build": "cross-env NODE_ENV=development webpack --mode development",
     "dev:watch": "cross-env NODE_ENV=development webpack serve --mode development",
+    "dev:build": "cross-env NODE_ENV=development webpack --mode development",
     "prod:watch": "cross-env NODE_ENV=production webpack serve --mode production",
     "prod:build": "cross-env NODE_ENV=production webpack --mode production --progress",
     "prod:prof": "cross-env NODE_ENV=production webpack --mode production --profile --json > stats.json",
     "sand:build": "cross-env NODE_ENV=production --SAND=true webpack --mode production --progress ",
-    "icon:build": "node ./scripts/icon-build.js"
+    "icon:build": "node ./scripts/icon-build.js",
+    "analyze:build": "cross-env NODE_ENV=production --ANALYZE=true webpack --mode production --progress",
+    "lint:fix": "eslint --fix src"
   },
   "engines": {
     "node": ">=18"
@@ -22,7 +23,7 @@
   "dependencies": {
     "bootstrap": "^5.3.1",
     "lazysizes": "^5.3.2",
-    "swiper": "^10.2.0"
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -65,6 +66,7 @@
     "style-loader": "^3.3.3",
     "watchpack": "^2.4.0",
     "webpack": "^5.88.2",
+    "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
