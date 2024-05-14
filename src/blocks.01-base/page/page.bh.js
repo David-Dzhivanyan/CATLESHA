@@ -23,7 +23,7 @@ module.exports = function(bh) {
                     {tag: 'title', content: json.title},
                     {tag: 'link', attrs: {rel: 'shortcut icon', href: 'favicons/favicon.ico', type: 'image/x-icon'}},
                     {elem: 'ua'},
-                    {elem: 'ua', content: `!function(o,n){document.documentElement.className+="ontouchstart"in o||navigator.maxTouchPoints?" ua-touch":" ua-no-touch"}(window);`},
+                    {elem: 'ua', content: '!function(o,n){document.documentElement.className+="ontouchstart"in o||navigator.maxTouchPoints?" ua-touch":" ua-no-touch"}(window);'},
                     {tag: 'link',  attrs: { rel: 'stylesheet', href: `${ process.env.SAND ? '' : process.env.SITE_PUBLIC_PATH ?? ''}merged.css?${Date.now()}` }},
                     json.head,
                     json.styles,
