@@ -1,1 +1,19 @@
 $icons-font-family: 'fi';
+
+$enable-dark-mode:            false;
+
+// scss-docs-start zindex-stack
+$zindex-dropdown:                   100;
+$zindex-sticky:                     120;
+$zindex-fixed:                      130;
+$zindex-offcanvas-backdrop:         140;
+$zindex-offcanvas:                  145;
+$zindex-modal-backdrop:             150;
+$zindex-modal:                      155;
+$zindex-popover:                    170;
+$zindex-tooltip:                    180;
+$zindex-toast:                      190;
+// scss-docs-end zindex-stack
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
