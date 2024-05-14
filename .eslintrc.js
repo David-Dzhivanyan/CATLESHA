@@ -1,40 +1,52 @@
-module.export = {
-  "globals": {
-    "NODE_ENV": true,
-    "PUBLIC_PATH": true
+module.exports = {
+  'globals': {
+    'NODE_ENV': true,
+    'PUBLIC_PATH': true
   },
-  "env": {
-    "es6": true,
-    "browser": true,
-    "node": true,
-    "jquery": true
+  'env': {
+    'es6': true,
+    'browser': true,
+    'node': true,
+    'jquery': true
   },
-  "extends": [
-    "eslint:recommended"
+  'extends': 'eslint:recommended',
+  'plugins': [
+    'standard',
+    'promise'
   ],
-  "plugins": [
-    "standard",
-    "promise"
-  ],
-  "rules": {
-    "no-var": "off",
-    "max-len": "off",
-    "require-jsdoc": ["error", {
-      "require": {
-        "FunctionDeclaration": true,
-        "MethodDefinition": false,
-        "ClassDeclaration": false,
-        "ArrowFunctionExpression": false,
-        "FunctionExpression": false
+  'overrides': [
+    {
+      'env': {
+        'es6': true,
+        'browser': true,
+        'node': true,
+        'jquery': true
+      },
+      'files': [
+        '.eslintrc.{js,cjs}'
+      ],
+      'parserOptions': {
+        'sourceType': 'module'
       }
-    }]
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 6,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
     }
+  ],
+  'parser': '@babel/eslint-parser',
+  'parserOptions': {
+    'ecmaVersion': 'latest',
+    'sourceType': 'module',
+  },
+  'rules': {
+    'linebreak-style': [
+      'error',
+      'windows'
+    ],
+    'quotes': [
+      'error',
+      'single'
+    ],
+    'semi': [
+      'error',
+      'always'
+    ]
   }
-}
+};
