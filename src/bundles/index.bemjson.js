@@ -2,12 +2,13 @@ module.exports = {
   block: 'page',
   title: 'Пустая',
   content: [
-    require('./common/header.bemjson'),
+    require('../blocks.04-project/header/header.tmpl-specs/base.bemjson')(),
     {cls: 'container', content: [
-        {block: 'image', mods: {size: '1200x200'}, cls: 'text-center align-middle', content: [
-            {block: 'img', attrs: {lazy: true}, src: 'https://placehold.co/1200x200' },
-          ]},
+        require('../blocks.04-project/logo/logo.tmpl-specs/base.bemjson')(),
+        require('../blocks.04-project/line/line.tmpl-specs/base.bemjson')(),
+        require('../blocks.04-project/copy/copy.tmpl-specs/base.bemjson')(),
+        require('../blocks.04-project/about/about.tmpl-specs/base.bemjson')()
       ]},
-    require('./common/footer.bemjson'),
+    require('../blocks.04-project/footer/footer.tmpl-specs/base.bemjson')(),
     ],
 };
