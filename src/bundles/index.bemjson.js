@@ -1,6 +1,6 @@
 module.exports = {
   block: 'page',
-  title: 'Пустая',
+  title: '$LESHA',
   content: [
     require('../blocks.04-project/header/header.tmpl-specs/base.bemjson')(),
     {cls: 'container', content: [
