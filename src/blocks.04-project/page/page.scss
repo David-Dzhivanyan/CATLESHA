@@ -3,4 +3,12 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-color: $primary;
+
+  background-image: url("../../../public/images/logo/light.png");
+  background-position: 50% -100px;
+  background-repeat: no-repeat;
+
+  @include media-breakpoint-up(md) {
+    background-position: 40% 100px;
+  }
 }

@@ -1,3 +1,105 @@
 .copy {
+  font-size: 18px;
+  background-image: url("../../../public/images/copy/money.png");
+  padding: 40px 0 80px;
+  background-position: 60% 0;
+  background-repeat: no-repeat;
 
+  .btn {
+    font-size: 16px;
+  }
+
+  @include media-breakpoint-up(md) {
+    .btn {
+      font-size: 22px;
+    }
+  }
+
+  @include media-breakpoint-up(xxl) {
+    padding: 80px 0 120px;
+  }
+}
+
+.copy__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: $orange;
+  box-shadow: 0 10px 0 0 $dark-blue;
+  border-radius: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  border: 2px solid $black;
+
+  @include media-breakpoint-up(sm) {
+    padding: 55px;
+  }
+}
+
+.copy__copy {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  overflow: scroll;
+
+  .img {
+    padding: 6px;
+    border: 2px solid $black;
+    border-radius: 10px;
+  }
+
+  @include media-breakpoint-up(sm) {
+    max-width: inherit;
+    overflow: visible;
+  }
+}
+
+.copy__bag {
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 90px;
+  .img {
+    width: 100%;
+  }
+
+  @include media-breakpoint-up(md) {
+    top: -70px;
+    width: 120px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    right: -30px;
+    width: auto;
+  }
+}
+
+.copy__handle {
+  position: absolute;
+  display: none;
+
+  @include media-breakpoint-up(lg) {
+    display: block;
+    top: -190px;
+    left: 15px;
+    width: 100%;
+
+    .img {
+      width: 100%;
+    }
+  }
+
+  @include media-breakpoint-up(xxl) {
+    top: -225px;
+    left: -115px;
+    width: auto;
+
+    .img {
+      width: auto;
+    }
+  }
 }

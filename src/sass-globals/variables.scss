@@ -16,6 +16,7 @@ $spacers: (
   20: 20px,
   40: 40px,
   60: 60px,
+  80: 80px,
 );
 
 // scss-docs-start zindex-stack
@@ -33,16 +34,13 @@ $zindex-toast:                      190;
 
 // scss-docs-start container-max-widths
 $container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
   xxl: 1920px
 );
 // scss-docs-end container-max-widths
 
 // scss-docs-start color-variables
 $blue:    #009eee;
+$dark-blue: #0074ad;
 $indigo:  #6610f2;
 $purple:  #ccbaff;
 $pink:    #d63384;
@@ -53,6 +51,21 @@ $green:   #198754;
 $teal:    #20c997;
 $cyan:    #0dcaf0;
 // scss-docs-end color-variables
+
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
+// scss-docs-end gray-color-variables
+
+$body-color: $black;
 
 
 @import "~bootstrap/scss/variables";
