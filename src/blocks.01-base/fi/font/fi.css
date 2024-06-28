@@ -3,7 +3,7 @@
     font-weight: normal;
     font-style: normal;
     font-display: block;
-    src: url("./fi.woff2?738f406278f6dbb7e5c1880f7a0c1cc6") format("woff2");
+    src: url("./fi.woff2?17dd72440eb5fe5116088f013c1d31ca") format("woff2");
 }
 
 .fi:before {
@@ -20,4 +20,7 @@
 
 .fi_icon_close:before {
     content: "\f101";
+}
+.fi_icon_copy:before {
+    content: "\f102";
 }

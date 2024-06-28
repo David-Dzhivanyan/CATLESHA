@@ -1,5 +1,5 @@
 module.exports = ({cls} = {}) => [
-  {block: 'copy', cls, content: [
+  {block: 'copy', cls, attrs: {id: 'contract'}, content: [
       {elem: 'inner', content: [
           {elem: 'handle', content: [
               {block: 'img', src: './images/copy/handle.png'},
@@ -9,10 +9,10 @@ module.exports = ({cls} = {}) => [
             ]},
           {cls: 'text-uppercase', content: 'contract address'},
           {elem: 'copy', content: [
-              {elem: 'copy-text', cls: 'text-uppercase', content: '0x0781694823f34e3bcbc8192e668960cc96163eb7'},
-              {block: 'img', cls: 'd-none d-sm-block', src: './images/copy/copy.png'},
+              {elem: 'copy-text', cls: 'text-uppercase', content: 'EQAK2J1WU9AuVYR2X_CwL_Tg_DfjFQf8LaRGN2kTLLNPV1Ww'},
+              {block: 'fi', cls: 'd-none d-sm-block', mods: {icon: 'copy'}}
             ]},
-          {block: 'btn', cls: 'btn-yellow text-uppercase', content: 'JOIN PRESALE RIGHT NOW!!!'}
+          {block: 'btn', cls: 'btn-yellow text-uppercase', attrs: {href: 'https://t.me/catleshaton'}, content: 'JOIN OUR COMMUNITY TELEGRAM!'}
         ]}
     ]}
 ];

@@ -159,13 +159,13 @@
     gap: 40px;
   }
 
-  @media (min-width: 1900px) {
+  @include media-breakpoint-up(xxl) {
     justify-content: flex-start;
   }
 }
 
 .about__cat-lesha {
-  @media (min-width: 1900px) {
+  @include media-breakpoint-up(xxl) {
     transform: rotate(-10deg) translateY(20px);
   }
 }

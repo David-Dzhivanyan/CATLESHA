@@ -31,29 +31,44 @@
 .btn-around {
   border-radius: 50%;
   padding: 18px;
-  box-shadow: -2px 5px 0 0 $black;
+  box-shadow: -2px 5px 0 0 $black !important;
   width: 60px;
   height: 60px;
+  text-transform: uppercase;
+
+  &:hover {
+    border-color: $black;
+    transition: $transition-base;
+    transition-property: background-color;
+  }
 
   &:active {
-    box-shadow: 2px -5px 0 0 $black;
+    box-shadow: 2px -5px 0 0 $black !important;
   }
 }
 
 .btn-yellow {
   background-color: $yellow;
+  box-shadow: 0 5px 0 0 #756842;
 
   &:hover {
     border-color: $black;
     background-color: #ffce44;
   }
+  &:active {
+    box-shadow: 0 -5px 0 0 #756842;
+  }
 }
 
 .btn-purple {
   background-color: $purple;
+  box-shadow: 0 5px 0 0 #6a6085;
 
   &:hover {
     border-color: $black;
     background-color: #835ec4;
+  }
+  &:active {
+    box-shadow: 0 -5px 0 0 #6a6085;
   }
 }

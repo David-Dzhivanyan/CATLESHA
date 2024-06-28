@@ -47,17 +47,21 @@
   overflow: auto;
   cursor: pointer;
 
-  .img {
-    padding: 6px;
+  .fi {
     border: 2px solid $black;
     border-radius: 10px;
+    font-size: 26px;
 
     &:hover {
       box-shadow: $box-shadow;
     }
   }
   &:hover {
-    color: $white;
+    .fi {
+      color: $orange;
+      border: 2px solid $orange;
+      background-color: $black;
+    }
   }
   @include media-breakpoint-up(sm) {
     max-width: inherit;

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Peachy Keen JF';
+    src: url('./fonts/PeachyKeenJF.woff2') format('woff2'),
+        url('./fonts/PeachyKeenJF.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
