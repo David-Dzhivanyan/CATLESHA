@@ -44,14 +44,21 @@
   align-items: center;
   gap: 10px;
   max-width: 100%;
-  overflow: scroll;
+  overflow: auto;
+  cursor: pointer;
 
   .img {
     padding: 6px;
     border: 2px solid $black;
     border-radius: 10px;
-  }
 
+    &:hover {
+      box-shadow: $box-shadow;
+    }
+  }
+  &:hover {
+    color: $white;
+  }
   @include media-breakpoint-up(sm) {
     max-width: inherit;
     overflow: visible;

@@ -1,7 +1,7 @@
 .about {
   margin: 0 calc(var(--bs-gutter-x) * -0.5);
   background-image: url("../../../public/images/about/cloud.png");
-  background-repeat: repeat-x;
+  background-repeat: no-repeat;
   background-position: 50% 0;
   padding-top: 50px;
   padding-bottom: 20px;
@@ -124,6 +124,9 @@
 
   @include media-breakpoint-up(md) {
     width: 100%;
+    .btn {
+      padding: 12px 30px;
+    }
   }
 
   @include media-breakpoint-up(xl) {
