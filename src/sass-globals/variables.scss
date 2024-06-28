@@ -1,6 +1,22 @@
 $icons-font-family: 'fi';
+$font-family-sans-serif:      "Peachy Keen JF", "poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$font-weight-lighter:         lighter;
+$font-weight-light:           300;
+$font-weight-normal:          900;
+$font-weight-medium:          500;
+$font-weight-semibold:        600;
+$font-weight-bold:            700;
+$font-weight-bolder:          bolder;
 
 $enable-dark-mode:            false;
+
+$spacers: (
+  0: 0,
+  20: 20px,
+  40: 40px,
+  60: 60px,
+);
 
 // scss-docs-start zindex-stack
 $zindex-dropdown:                   100;
@@ -22,8 +38,22 @@ $container-max-widths: (
   lg: 960px,
   xl: 1140px,
   xxl: 1920px
-) !default;
+);
 // scss-docs-end container-max-widths
+
+// scss-docs-start color-variables
+$blue:    #009eee;
+$indigo:  #6610f2;
+$purple:  #ccbaff;
+$pink:    #d63384;
+$red:     #dc3545;
+$yellow:    #ffe091;
+$orange:  #ffd500;
+$green:   #198754;
+$teal:    #20c997;
+$cyan:    #0dcaf0;
+// scss-docs-end color-variables
+
 
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/variables-dark";

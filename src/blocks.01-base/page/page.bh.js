@@ -25,6 +25,7 @@ module.exports = function(bh) {
                     {elem: 'ua'},
                     {elem: 'ua', content: '!function(o,n){document.documentElement.className+="ontouchstart"in o||navigator.maxTouchPoints?" ua-touch":" ua-no-touch"}(window);'},
                     {tag: 'link',  attrs: { rel: 'stylesheet', href: `${ process.env.SAND ? '' : process.env.SITE_PUBLIC_PATH ?? ''}merged.css?${Date.now()}` }},
+                    {tag: 'link', attrs: { rel: 'stylesheet', href: 'https://use.typekit.net/lxa5wdt.css'}},
                     json.head,
                     json.styles,
                 ]},

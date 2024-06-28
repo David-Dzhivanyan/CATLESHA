@@ -1,0 +1,58 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 1px solid $black;
+  box-shadow: 0 5px 0 0 $black;
+  padding: 12px 30px;
+
+  &:hover {
+    border-color: $black;
+    transition: $transition-base;
+    transition-property: background-color;
+  }
+
+  &:active {
+    box-shadow: 0 -5px 0 0 $black;
+  }
+}
+
+.btn-white {
+  background-color: #fffde9;
+
+  &:hover {
+    border-color: $black;
+    background-color: $gray-200;
+  }
+}
+
+.btn-around {
+  border-radius: 50%;
+  padding: 18px;
+  box-shadow: -2px 5px 0 0 $black;
+  width: 60px;
+  height: 60px;
+
+  &:active {
+    box-shadow: 2px -5px 0 0 $black;
+  }
+}
+
+.btn-yellow {
+  background-color: $yellow;
+
+  &:hover {
+    border-color: $black;
+    background-color: #ffce44;
+  }
+}
+
+.btn-purple {
+  background-color: $purple;
+
+  &:hover {
+    border-color: $black;
+    background-color: #835ec4;
+  }
+}
