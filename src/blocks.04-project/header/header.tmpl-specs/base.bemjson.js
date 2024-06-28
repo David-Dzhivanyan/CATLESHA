@@ -2,7 +2,7 @@ module.exports = ({cls} = {}) => [
   {block: 'header', cls, content: [
       {cls: 'container', content: [
           {elem: 'inner', content: [
-              {block: 'a', attrs: {href: '#'}, content: [
+              {block: 'a', cls: 'header__logo', attrs: {href: '#'}, content: [
                   {block: 'img', src: './images/header/logo.png'}
                 ]},
               {elem: 'nav', tag: 'nav', content: [

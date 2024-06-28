@@ -53,6 +53,12 @@
 }
 
 .footer__logo {
+  transition: $transition-base;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
   @include media-breakpoint-up(lg) {
     margin-right: auto;
   }

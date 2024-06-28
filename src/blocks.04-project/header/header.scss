@@ -58,3 +58,11 @@
     gap: 20px;
   }
 }
+
+.header__logo {
+  transition: $transition-base;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
