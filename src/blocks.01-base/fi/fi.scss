@@ -1,10 +1,12 @@
-@import "variables";
+@import "./font/fi";
+$icons-font-folder: "./font" !default;
+
 @font-face {
   font-family: $icons-font-family;
   font-weight: normal;
   font-style: normal;
   font-display: block;
-  src: url('#{$icons-font-folder}/#{$icons-font-family}.woff') format('woff');
+  src: url('#{$icons-font-folder}/#{$icons-font-family}.woff2') format('woff2');
 }
 .fi{
   font-family: $icons-font-family;
