@@ -9,6 +9,10 @@
     height: 100%;
   }
 
+  @media (min-width: 346px) {
+    background-position: 50% 260px;
+    height: 260px;
+  }
 
   @include media-breakpoint-up(lg) {
     background-position: 50% 170px;

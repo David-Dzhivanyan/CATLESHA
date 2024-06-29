@@ -2,15 +2,13 @@
   position: relative;
   margin: 0 calc(var(--bs-gutter-x) * -0.5);
   background-image: url("../../../public/images/about/cloud.png");
-  background-size: 100%;
+  background-size: 140%;
   background-repeat: no-repeat;
   background-position: 50% 0;
   padding-top: 50px;
   padding-bottom: 20px;
 
-  @include media-breakpoint-up(lg) {
-    background-size: auto;
-  }
+
   .img {
     width: 100%;
   }
@@ -39,7 +37,9 @@
       left: -20px;
     }
   }
-
+  @include media-breakpoint-up(lg) {
+    background-size: auto;
+  }
 }
 
 .about__inner {
@@ -131,12 +131,24 @@
 }
 
 .about__text {
-  max-height: 500px;
   overflow: auto;
   text-align: center;
 
   @include media-breakpoint-up(md) {
     text-align: left;
+    max-height: 150px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    max-height: 200px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    max-height: 250px;
+  }
+
+  @include media-breakpoint-up(xxl) {
+    max-height: 500px;
   }
 }
 
@@ -201,13 +213,26 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  transform: rotate(15deg);
+  transform: rotate(19deg);
+
+  &:hover {
+    zoom: 1.1;
+  }
 
   &.img {
     width: 60px;
   }
-
   @include media-breakpoint-up(sm) {
     display: none;
+    right: 6px;
+    bottom: 10px;
+  }
+
+  @include media-breakpoint-up(xxl) {
+    display: block;
+
+    &.img {
+      width: 190px;
+    }
   }
 }
