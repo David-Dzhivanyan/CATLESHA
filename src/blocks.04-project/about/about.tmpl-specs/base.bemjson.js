@@ -22,7 +22,8 @@ module.exports = ({cls} = {}) => [
                           {block: 'btn', cls: 'btn-yellow', attrs: {href: 'https://www.geckoterminal.com/ton/pools/EQAK2J1WU9AuVYR2X_CwL_Tg_DfjFQf8LaRGN2kTLLNPV1Ww'}, content: 'chart'},
                         ]},
                     ]}
-                ]}
+                ]},
+              {block: 'img', cls: 'about__money', src: './images/about/money.png'}
             ]}
         ]},
     ]}
