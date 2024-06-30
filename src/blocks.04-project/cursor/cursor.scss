@@ -7,9 +7,14 @@
   z-index: 100;
   transition: $transition-base;
   transition-delay: 0.05s;
+  display: none;
 
   .img {
     width: 70px;
     height: 70px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: block;
   }
 }
