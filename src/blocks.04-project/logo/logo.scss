@@ -23,6 +23,7 @@
   position: absolute;
   display: none;
   transition: $transition-base;
+  max-width: 120px !important;
 
   @include media-breakpoint-up(md) {
     display: block;
@@ -33,16 +34,15 @@
   }
 
   &.m1 {
-    top: -10px;
+    top: -30px;
     left: 10%;
-    transform: rotate(-15deg);
+    transform: rotate(5deg);
 
     @include media-breakpoint-up(md) {
       left: 40%;
     }
 
     @include media-breakpoint-up(xl) {
-      top: -10px;
       left: 40%;
     }
   }
@@ -50,7 +50,7 @@
   &.m2 {
     top: 40%;
     left: 0%;
-    transform: rotate(-75deg);
+    transform: rotate(-40deg);
 
     @include media-breakpoint-up(xl) {
       left: 10%;
@@ -59,7 +59,7 @@
 
   &.m3 {
     top: 50%;
-    right: 0%;
+    right: 1%;
     transform: rotate(50deg);
 
     @include media-breakpoint-up(xl) {
@@ -70,8 +70,8 @@
 
   &.m4 {
     bottom: 0;
-    left: 0;
-    transform: rotate(-15deg);
+    left: 10%;
+    transform: rotate(10deg);
 
     @include media-breakpoint-up(xl) {
       bottom: 30px;

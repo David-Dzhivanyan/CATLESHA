@@ -31,12 +31,15 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     z-index: -1;
-    animation: 1s linear infinite rotate-small;
 
     @include media-breakpoint-up(sm) {
       left: -20px;
     }
   }
+  @include media-breakpoint-up(md) {
+    background-position: 50% 40px;
+  }
+
   @include media-breakpoint-up(lg) {
     background-size: auto;
   }
@@ -204,16 +207,19 @@
 }
 
 .about__cat-lesha {
+  max-width: 55%;
+
   @include media-breakpoint-up(xxl) {
+    max-width: 40%;
     transform: rotate(-10deg) translateY(20px);
   }
 }
 
 .about__money {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  transform: rotate(19deg);
+  right: 3%;
+  bottom: -3%;
+  transform: rotate(40deg);
 
   &:hover {
     zoom: 1.1;
@@ -229,8 +235,6 @@
   }
 
   @include media-breakpoint-up(xxl) {
-    display: block;
-
     &.img {
       width: 190px;
     }

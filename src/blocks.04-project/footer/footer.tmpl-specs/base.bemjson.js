@@ -12,14 +12,15 @@ module.exports = ({cls} = {}) => [
                 ]},
               {elem: 'buttons', content: [
                   {block: 'btn', cls: 'btn-around btn-purple', attrs: {href: 'https://t.me/catleshaton'}, content: [
-                      {block: 'img', src: './images/header/tg.png'}
+                      {block: 'img', src: './images/header/tg.svg'}
                     ]},
                   {block: 'btn', cls: 'btn-around btn-yellow', attrs: {href: 'https://x.com/leshaonton'}, content: [
-                      {block: 'img', src: './images/header/x.png'}
+                      {block: 'img', src: './images/header/x.svg'}
                     ]},
                 ]}
             ]}
         ]},
-      {elem: 'under', content: '© 2024 CAT LESHA Token. All Rights Reserved.'}
+      {elem: 'under', content: '© 2024 CAT LESHA Token. All Rights Reserved.'},
+      require('../../cursor/cursor.tmpl-specs/base.bemjson')()
     ]}
 ]; 

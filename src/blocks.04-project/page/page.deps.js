@@ -3,5 +3,6 @@ module.exports = {
     ],
     shouldDeps: [
         {block: 'bootstrap'},
+        {block: 'cursor'},
     ],
 };

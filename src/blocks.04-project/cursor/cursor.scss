@@ -1,0 +1,14 @@
+.cursor {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  pointer-events: none;
+  z-index: 100;
+  transition: $transition-base;
+  transition-delay: 0.05s;
+
+  .img {
+    width: 70px;
+    height: 70px;
+  }
+}

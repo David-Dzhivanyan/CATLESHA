@@ -14,8 +14,8 @@ module.exports = ({cls} = {}) => [
             ]},
           {block: 'btn', cls: 'btn-yellow text-uppercase', attrs: {href: 'https://t.me/catleshaton'}, content: 'JOIN OUR COMMUNITY TELEGRAM!'}
         ]},
-      {block: 'img', cls: 'copy__money m1', src: './images/logo/money.png'},
-      {block: 'img', cls: 'copy__money m2', src: './images/logo/money.png'},
-      {block: 'img', cls: 'copy__money m3', src: './images/logo/money.png'},
+      {block: 'img', cls: 'copy__money m1', src: './images/logo/coin.svg'},
+      {block: 'img', cls: 'copy__money m2', src: './images/logo/coin.svg'},
+      {block: 'img', cls: 'copy__money m3', src: './images/logo/coin.svg'},
     ]}
 ];

@@ -8,7 +8,11 @@
   .container {
     height: 100%;
   }
-
+  .btn-purple {
+    .img {
+      height: 28px;
+    }
+  }
   @media (min-width: 346px) {
     background-position: 50% 260px;
     height: 260px;
@@ -47,9 +51,13 @@
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-left: 0;
 
   @include media-breakpoint-up(sm) {
     gap: 40px;
+  }
+  @include media-breakpoint-up(xl) {
+    margin-left: 80px;
   }
 }
 
@@ -65,6 +73,10 @@
 
 .header__logo {
   transition: $transition-base;
+  .img {
+    max-width: 200px;
+    max-height: 100px;
+  }
 
   &:hover {
     transform: scale(1.1);

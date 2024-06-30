@@ -23,7 +23,7 @@ module.exports = ({cls} = {}) => [
                         ]},
                     ]}
                 ]},
-              {block: 'img', cls: 'about__money', src: './images/about/money.png'}
+              {block: 'img', cls: 'about__money', src: './images/about/coin.svg'}
             ]}
         ]},
     ]}

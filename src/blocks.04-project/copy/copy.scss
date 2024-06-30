@@ -1,7 +1,6 @@
 .copy {
   position: relative;
   font-size: 18px;
-  //background-image: url("../../../public/images/copy/money.png");
   padding: 40px 0 80px;
   background-position: 60% 0;
   background-repeat: no-repeat;
@@ -140,6 +139,7 @@
   position: absolute;
   display: none;
   transition: $transition-base;
+  max-width: 120px;
   //z-index: -1;
 
   @include media-breakpoint-up(md) {
@@ -165,7 +165,7 @@
 
   &.m2 {
     top: 40%;
-    left: 0%;
+    left: 1%;
     transform: rotate(-30deg);
 
     @include media-breakpoint-up(xxl) {
@@ -175,7 +175,7 @@
 
   &.m3 {
     top: 50%;
-    right: 0%;
+    right: 3%;
     transform: rotate(-220deg);
 
     @include media-breakpoint-up(xxl) {
