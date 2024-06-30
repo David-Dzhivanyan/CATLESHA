@@ -1,5 +1,3 @@
-import debounce from "lodash-es/debounce";
-
 class Cursor {
   constructor(elem) {
     this.block = elem;
@@ -12,9 +10,26 @@ class Cursor {
     this.block.classList.add('cursor_inited');
   };
   cursor = () => {
+    console.log(document.body.offsetWidth, this.block.offsetWidth);
+
     window.addEventListener('mousemove', e => {
-      this.block.style.left = e.pageX + 10 + 'px';
-      this.block.style.top = e.pageY - 10 + 'px';
+      let x = e.pageX + 10;
+      let y = e.pageY - 10;
+      const width = this.block.offsetWidth;
+      const bodyWidth = document.body.offsetWidth;
+      const bodyHeight = document.body.offsetHeight;
+
+      if (x + width > bodyWidth) {
+        this.block.style.left = e.pageX - width + 'px';
+      } else {
+        this.block.style.left = e.pageX + 10 + 'px';
+      }
+
+      if (y + width > bodyHeight) {
+        this.block.style.top = e.pageY - 10 - width + 'px';
+      } else {
+        this.block.style.top = e.pageY - 10 + 'px';
+      }
     })
   }
 

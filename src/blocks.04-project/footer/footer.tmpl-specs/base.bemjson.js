@@ -11,10 +11,10 @@ module.exports = ({cls} = {}) => [
                   {block: 'a', attrs: {href: '#socials'}, content: 'socials'},
                 ]},
               {elem: 'buttons', content: [
-                  {block: 'btn', cls: 'btn-around btn-purple', attrs: {href: 'https://t.me/catleshaton'}, content: [
+                  {block: 'btn', cls: 'footer__x btn-around btn-purple', attrs: {href: 'https://t.me/catleshaton'}, content: [
                       {block: 'img', src: './images/header/tg.svg'}
                     ]},
-                  {block: 'btn', cls: 'btn-around btn-yellow', attrs: {href: 'https://x.com/leshaonton'}, content: [
+                  {block: 'btn', cls: 'footer__tg btn-around btn-yellow', attrs: {href: 'https://x.com/leshaonton'}, content: [
                       {block: 'img', src: './images/header/x.svg'}
                     ]},
                 ]}

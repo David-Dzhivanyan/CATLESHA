@@ -11,10 +11,10 @@ module.exports = ({cls} = {}) => [
                   {block: 'a', attrs: {href: '#socials'}, content: 'socials'},
                 ]},
               {elem: 'buttons', content: [
-                  {block: 'btn', cls: 'btn-around btn-purple', attrs: {href: 'https://t.me/catleshaton'}, content: [
+                  {block: 'btn', cls: 'header__tg btn-around btn-purple', attrs: {href: 'https://t.me/catleshaton'}, content: [
                       {block: 'img', src: './images/header/tg.svg'}
                     ]},
-                  {block: 'btn', cls: 'btn-around btn-yellow', attrs: {href: 'https://x.com/leshaonton'}, content: [
+                  {block: 'btn', cls: 'header__x btn-around btn-yellow', attrs: {href: 'https://x.com/leshaonton'}, content: [
                       {block: 'img', src: './images/header/x.svg'}
                     ]},
                   {block: 'btn', cls: 'btn-white text-uppercase', attrs: {href: 'https://dedust.io/swap/TON/EQA5-G7djF86kQlspnEu4RI2HN-zgu81DcE_ap0yuA84fa1x?amount=1000000000'}, content: 'buy now'},
